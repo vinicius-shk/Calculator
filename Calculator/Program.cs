@@ -10,46 +10,64 @@ namespace Calculator
     {
         static void Main(string[] args)
         {
-            Console.Write("Escolha entre Somar, Subtrair, Dividir ou Multiplicar: ");
-            string operation = Console.ReadLine();
-
-            double num1, num2;
-
-            Console.Write("Digite o primeiro número: ");
-            num1 = Convert.ToInt32(Console.ReadLine());
-
-            Console.Write("Digite o segundo número: ");
-            num2 = Convert.ToInt32(Console.ReadLine());
-
-            double[] nums = { num1, num2 };
-
-            switch (operation)
+            try
             {
-                case ("Somar"):
-                    Console.WriteLine(Sum(nums));
-                    break;
-                case ("Dividir"):
-                    Console.WriteLine(Divide(nums));
-                    break;
-                case ("Subtrair"):
-                    Console.WriteLine(Subtract(nums));
-                    break;
-                case ("Multiplicar"):
-                    Console.WriteLine(Multiply(nums));
-                    break;
-                default:
-                    Console.WriteLine("Operação Inválida!");
-                    break;
+                Console.Write("Escolha entre +, -, / ou *: ");
+                string operation = Console.ReadLine();
+
+                double num1, num2;
+
+                Console.Write("Digite o primeiro número: ");
+                num1 = Convert.ToInt32(Console.ReadLine());
+
+                Console.Write("Digite o segundo número: ");
+                num2 = Convert.ToInt32(Console.ReadLine());
+                if (num2 == 0 && operation == "/") {
+                    Console.WriteLine("Cannot divide by zero");
+                    Console.ReadLine();
+                    return;
+                }
+
+                double[] nums = { num1, num2 };
+
+                switch (operation)
+                {
+                    case ("+"):
+                        Console.WriteLine(Sum(nums));
+                        break;
+                    case ("/"):
+                        Console.WriteLine(Divide(nums));
+                        break;
+                    case ("-"):
+                        Console.WriteLine(Subtract(nums));
+                        break;
+                    case ("*"):
+                        Console.WriteLine(Multiply(nums));
+                        break;
+                    default:
+                        Console.WriteLine("Operação Inválida!");
+                        break;
+                }
+
+                Console.ReadLine();
+            }
+            /*catch (DivideByZeroException e)
+            {
+                Console.WriteLine(e.Message);
+            }*/ // Commented because doubles divided by double 0 return infinite and catch was useless.
+            catch (FormatException e)
+            {
+                Console.WriteLine(e.Message);
             }
 
-            Console.ReadLine();
+           
         }
 
         static double Sum(double[] nums) => nums.Sum(x => x);
 
         static double Subtract(double[] nums) => nums.Aggregate((acc, x) => acc - x);
 
-        static double Divide(double[] nums) => nums[0] / nums[1];
+        static double Divide(double[] nums) => nums.Aggregate((acc, x) => acc / x);
 
         static double Multiply(double[] nums) => nums.Aggregate((acc, x) => acc * x);
     }
