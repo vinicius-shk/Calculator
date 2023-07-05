@@ -33,16 +33,16 @@ namespace Calculator
                 switch (operation)
                 {
                     case ("+"):
-                        Console.WriteLine(Sum(nums));
+                        Console.WriteLine(CalcOperations.Sum(nums));
                         break;
                     case ("/"):
-                        Console.WriteLine(Divide(nums));
+                        Console.WriteLine(CalcOperations.Divide(nums));
                         break;
                     case ("-"):
-                        Console.WriteLine(Subtract(nums));
+                        Console.WriteLine(CalcOperations.Subtract(nums));
                         break;
                     case ("*"):
-                        Console.WriteLine(Multiply(nums));
+                        Console.WriteLine(CalcOperations.Multiply(nums));
                         break;
                     default:
                         Console.WriteLine("Operação Inválida!");
@@ -59,16 +59,7 @@ namespace Calculator
             {
                 Console.WriteLine(e.Message);
             }
-
-           
+      
         }
-
-        static double Sum(double[] nums) => nums.Sum(x => x);
-
-        static double Subtract(double[] nums) => nums.Aggregate((acc, x) => acc - x);
-
-        static double Divide(double[] nums) => nums.Aggregate((acc, x) => acc / x);
-
-        static double Multiply(double[] nums) => nums.Aggregate((acc, x) => acc * x);
     }
 }
