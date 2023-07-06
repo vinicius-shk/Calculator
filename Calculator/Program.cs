@@ -51,10 +51,6 @@ namespace Calculator
 
                 Console.ReadLine();
             }
-            /*catch (DivideByZeroException e)
-            {
-                Console.WriteLine(e.Message);
-            }*/ // Commented because doubles divided by double 0 return infinite and catch was useless.
             catch (FormatException e)
             {
                 Console.WriteLine(e.Message);
