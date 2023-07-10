@@ -1,5 +1,3 @@
-using Calculator;
-
 namespace Calculator.Tests
 {
     public class CalculatorTests
