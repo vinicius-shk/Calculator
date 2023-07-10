@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Calculator
 {
-    internal class CalcOperations
+    public class CalcOperations
     {
         public static double Sum(double[] nums) => nums.Sum(x => x);
 
